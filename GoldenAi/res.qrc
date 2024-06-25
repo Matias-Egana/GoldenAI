@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="image">
+    <file>background/hacia-atras.png</file>
+    <file>background/lista-de-verificacion.png</file>
+    <file>background/eliminar.png</file>
+    <file>background/background_register_plate.jpg</file>
+    <file>background/icon_agregarPatentes.png</file>
+    <file>background/icon.svg</file>
+    <file>background/icon_goldenAi.png</file>
+    <file>background/background_register.jpg</file>
+  </qresource>
+</RCC>
