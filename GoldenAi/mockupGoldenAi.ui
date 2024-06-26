@@ -6,9 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1164</width>
-    <height>830</height>
+    <width>1196</width>
+    <height>864</height>
    </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>GoldenAI</string>
@@ -33,7 +36,7 @@
          <x>0</x>
          <y>0</y>
          <width>611</width>
-         <height>701</height>
+         <height>751</height>
         </rect>
        </property>
        <property name="widgetResizable">
@@ -45,7 +48,7 @@
           <x>0</x>
           <y>0</y>
           <width>609</width>
-          <height>699</height>
+          <height>749</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -54,8 +57,8 @@
         <widget class="QLabel" name="label">
          <property name="geometry">
           <rect>
-           <x>4</x>
-           <y>-5</y>
+           <x>10</x>
+           <y>60</y>
            <width>601</width>
            <height>701</height>
           </rect>
@@ -72,8 +75,8 @@
       <widget class="QTableWidget" name="tableWidget">
        <property name="geometry">
         <rect>
-         <x>610</x>
-         <y>0</y>
+         <x>620</x>
+         <y>60</y>
          <width>501</width>
          <height>701</height>
         </rect>
@@ -121,7 +124,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>730</y>
+         <y>770</y>
          <width>211</width>
          <height>51</height>
         </rect>
@@ -156,6 +159,37 @@
          <width>50</width>
          <height>50</height>
         </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>0</y>
+         <width>51</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+
+QPushButton {
+     background-color: transparent; 
+      border: none;
+ }
+ QPushButton:hover {
+      background-color: grey;
+ }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/image/background/close.png</normaloff>:/image/background/close.png</iconset>
        </property>
       </widget>
      </widget>
