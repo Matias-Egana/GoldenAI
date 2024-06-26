@@ -48,51 +48,51 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(510, 220, 281, 31))
-        self.plainTextEdit.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Patente = QtWidgets.QPlainTextEdit(self.widget)
+        self.Patente.setGeometry(QtCore.QRect(510, 220, 281, 31))
+        self.Patente.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Patente.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.pushButton = QtWidgets.QPushButton(self.widget)
-        self.pushButton.setGeometry(QtCore.QRect(820, 210, 40, 40))
+        self.Patente.setObjectName("Patente")
+        self.bAgregar = QtWidgets.QPushButton(self.widget)
+        self.bAgregar.setGeometry(QtCore.QRect(820, 210, 40, 40))
         font = QtGui.QFont()
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(" QPushButton {\n"
+        self.bAgregar.setFont(font)
+        self.bAgregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bAgregar.setStyleSheet(" QPushButton {\n"
 "    background-color: transparent; \n"
 "     border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
 "      background-color: green;\n"
 "}")
-        self.pushButton.setText("")
+        self.bAgregar.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/image/background/lista-de-verificacion.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon1)
-        self.pushButton.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_2.setGeometry(QtCore.QRect(860, 210, 40, 40))
+        self.bAgregar.setIcon(icon1)
+        self.bAgregar.setIconSize(QtCore.QSize(40, 40))
+        self.bAgregar.setObjectName("bAgregar")
+        self.bEliminar = QtWidgets.QPushButton(self.widget)
+        self.bEliminar.setGeometry(QtCore.QRect(860, 210, 40, 40))
         font = QtGui.QFont()
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet(" QPushButton {\n"
+        self.bEliminar.setFont(font)
+        self.bEliminar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bEliminar.setStyleSheet(" QPushButton {\n"
 "    background-color: transparent; \n"
 "     border: none;\n"
 "}\n"
 "QPushButton:hover {\n"
 "      background-color: #B22222;\n"
 "}")
-        self.pushButton_2.setText("")
+        self.bEliminar.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/image/background/eliminar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon2)
-        self.pushButton_2.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.bEliminar.setIcon(icon2)
+        self.bEliminar.setIconSize(QtCore.QSize(40, 40))
+        self.bEliminar.setObjectName("bEliminar")
         self.scrollArea = QtWidgets.QScrollArea(self.widget)
         self.scrollArea.setGeometry(QtCore.QRect(510, 270, 381, 391))
         self.scrollArea.setWidgetResizable(True)
@@ -100,32 +100,32 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 379, 389))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_4.setGeometry(QtCore.QRect(0, 0, 381, 391))
-        self.label_4.setStyleSheet("background-color:white;")
-        self.label_4.setText("")
-        self.label_4.setObjectName("label_4")
+        self.MostrarPatentes = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.MostrarPatentes.setGeometry(QtCore.QRect(0, 0, 381, 391))
+        self.MostrarPatentes.setStyleSheet("background-color:white;")
+        self.MostrarPatentes.setText("")
+        self.MostrarPatentes.setObjectName("MostrarPatentes")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.pushButton_3 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_3.setGeometry(QtCore.QRect(510, 60, 40, 41))
-        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_3.setStyleSheet("QPushButton {\n"
+        self.bAtras = QtWidgets.QPushButton(self.widget)
+        self.bAtras.setGeometry(QtCore.QRect(510, 60, 40, 41))
+        self.bAtras.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bAtras.setStyleSheet("QPushButton {\n"
 "     background-color: transparent; \n"
 "      border: none;\n"
 " }\n"
 " QPushButton:hover {\n"
 "      background-color: grey;\n"
 " }")
-        self.pushButton_3.setText("")
+        self.bAtras.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/image/background/hacia-atras.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon3)
-        self.pushButton_3.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_4.setGeometry(QtCore.QRect(840, 60, 51, 51))
-        self.pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_4.setStyleSheet("\n"
+        self.bAtras.setIcon(icon3)
+        self.bAtras.setIconSize(QtCore.QSize(40, 40))
+        self.bAtras.setObjectName("bAtras")
+        self.bSalir = QtWidgets.QPushButton(self.widget)
+        self.bSalir.setGeometry(QtCore.QRect(840, 60, 51, 51))
+        self.bSalir.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bSalir.setStyleSheet("\n"
 "\n"
 "QPushButton {\n"
 "     background-color: transparent; \n"
@@ -134,11 +134,11 @@ class Ui_MainWindow(object):
 " QPushButton:hover {\n"
 "      background-color: grey;\n"
 " }")
-        self.pushButton_4.setText("")
+        self.bSalir.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon4)
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.bSalir.setIcon(icon4)
+        self.bSalir.setObjectName("bSalir")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -148,7 +148,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Ingresar"))
         self.label_3.setText(_translate("MainWindow", "Register Plate"))
-        self.plainTextEdit.setPlaceholderText(_translate("MainWindow", "Ingrese su patente"))
+        self.Patente.setPlaceholderText(_translate("MainWindow", "Ingrese su patente"))
 import res_rc
 
 

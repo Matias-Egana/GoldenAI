@@ -88,7 +88,7 @@ border-bottom-right-radius: 50px;</string>
       <string>Register Plate</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QPlainTextEdit" name="Patente">
      <property name="geometry">
       <rect>
        <x>510</x>
@@ -111,7 +111,7 @@ color:rgba(0,0,0,240);
       <string>Ingrese su patente</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="bAgregar">
      <property name="geometry">
       <rect>
        <x>820</x>
@@ -149,7 +149,7 @@ QPushButton:hover {
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="bEliminar">
      <property name="geometry">
       <rect>
        <x>860</x>
@@ -208,7 +208,7 @@ QPushButton:hover {
         <height>389</height>
        </rect>
       </property>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="MostrarPatentes">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -226,7 +226,7 @@ QPushButton:hover {
       </widget>
      </widget>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="bAtras">
      <property name="geometry">
       <rect>
        <x>510</x>
@@ -261,7 +261,7 @@ QPushButton:hover {
       </size>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="bSalir">
      <property name="geometry">
       <rect>
        <x>840</x>

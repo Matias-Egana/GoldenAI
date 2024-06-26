@@ -54,7 +54,7 @@
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="Camara">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -120,7 +120,7 @@
         </property>
        </column>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="bRegistrar">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -161,7 +161,7 @@
         </size>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="bSalir">
        <property name="geometry">
         <rect>
          <x>1110</x>

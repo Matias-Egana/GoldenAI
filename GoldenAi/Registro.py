@@ -26,14 +26,14 @@ class Ui_MainWindow(object):
         self.widget.setGeometry(QtCore.QRect(39, 39, 991, 721))
         self.widget.setObjectName("widget")
         self.label = QtWidgets.QLabel(self.widget)
-        self.label.setGeometry(QtCore.QRect(80, 40, 411, 661))
+        self.label.setGeometry(QtCore.QRect(80, 40, 421, 661))
         self.label.setStyleSheet("border-image: url(:/image/background/background_register.jpg);\n"
 "background-color: rgba(0, 0, 0, 0.8);\n"
 "border-top-left-radius: 50px;")
         self.label.setText("")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget)
-        self.label_2.setGeometry(QtCore.QRect(494, 45, 431, 651))
+        self.label_2.setGeometry(QtCore.QRect(494, 35, 431, 671))
         self.label_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_2.setStyleSheet("background-color:rgba(255,255,255,255);\n"
 "border-bottom-right-radius: 50px;")
@@ -47,31 +47,31 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(570, 400, 311, 31))
-        self.plainTextEdit.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Email = QtWidgets.QPlainTextEdit(self.widget)
+        self.Email.setGeometry(QtCore.QRect(570, 400, 311, 31))
+        self.Email.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Email.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.plainTextEdit_2 = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit_2.setGeometry(QtCore.QRect(570, 460, 311, 31))
-        self.plainTextEdit_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit_2.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Email.setObjectName("Email")
+        self.Contra = QtWidgets.QPlainTextEdit(self.widget)
+        self.Contra.setGeometry(QtCore.QRect(570, 460, 311, 31))
+        self.Contra.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Contra.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit_2.setObjectName("plainTextEdit_2")
-        self.pushButton = QtWidgets.QPushButton(self.widget)
-        self.pushButton.setGeometry(QtCore.QRect(610, 570, 211, 41))
+        self.Contra.setObjectName("Contra")
+        self.bCrear = QtWidgets.QPushButton(self.widget)
+        self.bCrear.setGeometry(QtCore.QRect(610, 570, 211, 41))
         font = QtGui.QFont()
         font.setPointSize(-1)
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("            QPushButton {\n"
+        self.bCrear.setFont(font)
+        self.bCrear.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bCrear.setStyleSheet("            QPushButton {\n"
 "                background: qlineargradient(\n"
 "                    spread:pad, x1:0, y1:0, x2:1, y2:0,\n"
 "                    stop:0 #6dd5fa, stop:0.5 #8e44ad, stop:1 #bf55ec\n"
@@ -89,29 +89,29 @@ class Ui_MainWindow(object):
 "                    stop:0 #6dd5fa, stop:0.5 rgba(0, 0, 0, 0.3), stop:1 #bf55ec\n"
 "                );\n"
 "            }")
-        self.pushButton.setObjectName("pushButton")
-        self.plainTextEdit_3 = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit_3.setGeometry(QtCore.QRect(570, 280, 311, 31))
-        self.plainTextEdit_3.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit_3.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.bCrear.setObjectName("bCrear")
+        self.Nombre = QtWidgets.QPlainTextEdit(self.widget)
+        self.Nombre.setGeometry(QtCore.QRect(570, 280, 311, 31))
+        self.Nombre.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Nombre.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit_3.setObjectName("plainTextEdit_3")
-        self.plainTextEdit_4 = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit_4.setGeometry(QtCore.QRect(570, 340, 311, 31))
-        self.plainTextEdit_4.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit_4.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Nombre.setObjectName("Nombre")
+        self.Apellido = QtWidgets.QPlainTextEdit(self.widget)
+        self.Apellido.setGeometry(QtCore.QRect(570, 340, 311, 31))
+        self.Apellido.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Apellido.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit_4.setObjectName("plainTextEdit_4")
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_2.setGeometry(QtCore.QRect(840, 70, 51, 51))
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("\n"
+        self.Apellido.setObjectName("Apellido")
+        self.bSalir = QtWidgets.QPushButton(self.widget)
+        self.bSalir.setGeometry(QtCore.QRect(840, 70, 51, 51))
+        self.bSalir.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bSalir.setStyleSheet("\n"
 "\n"
 "QPushButton {\n"
 "     background-color: transparent; \n"
@@ -120,11 +120,11 @@ class Ui_MainWindow(object):
 " QPushButton:hover {\n"
 "      background-color: grey;\n"
 " }")
-        self.pushButton_2.setText("")
+        self.bSalir.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon1)
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.bSalir.setIcon(icon1)
+        self.bSalir.setObjectName("bSalir")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -134,11 +134,11 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Registrar"))
         self.label_3.setText(_translate("MainWindow", "Register"))
-        self.plainTextEdit.setPlaceholderText(_translate("MainWindow", "Email"))
-        self.plainTextEdit_2.setPlaceholderText(_translate("MainWindow", "Contraseña"))
-        self.pushButton.setText(_translate("MainWindow", "Crear Usuario"))
-        self.plainTextEdit_3.setPlaceholderText(_translate("MainWindow", "Nombre"))
-        self.plainTextEdit_4.setPlaceholderText(_translate("MainWindow", "Apellido"))
+        self.Email.setPlaceholderText(_translate("MainWindow", "Email"))
+        self.Contra.setPlaceholderText(_translate("MainWindow", "Contraseña"))
+        self.bCrear.setText(_translate("MainWindow", "Crear Usuario"))
+        self.Nombre.setPlaceholderText(_translate("MainWindow", "Nombre"))
+        self.Apellido.setPlaceholderText(_translate("MainWindow", "Apellido"))
 import res_rc
 
 

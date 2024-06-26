@@ -32,7 +32,7 @@
       <rect>
        <x>80</x>
        <y>40</y>
-       <width>411</width>
+       <width>421</width>
        <height>661</height>
       </rect>
      </property>
@@ -49,9 +49,9 @@ border-top-left-radius: 50px;</string>
      <property name="geometry">
       <rect>
        <x>494</x>
-       <y>45</y>
+       <y>35</y>
        <width>431</width>
-       <height>651</height>
+       <height>671</height>
       </rect>
      </property>
      <property name="cursor">
@@ -85,7 +85,7 @@ border-bottom-right-radius: 50px;</string>
       <string>Register</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QPlainTextEdit" name="Email">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -108,7 +108,7 @@ color:rgba(0,0,0,240);
       <string>Email</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_2">
+    <widget class="QPlainTextEdit" name="Contra">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -131,7 +131,7 @@ color:rgba(0,0,0,240);
       <string>Contraseña</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="bCrear">
      <property name="geometry">
       <rect>
        <x>610</x>
@@ -172,7 +172,7 @@ color:rgba(0,0,0,240);
       <string>Crear Usuario</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_3">
+    <widget class="QPlainTextEdit" name="Nombre">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -195,7 +195,7 @@ color:rgba(0,0,0,240);
       <string>Nombre</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_4">
+    <widget class="QPlainTextEdit" name="Apellido">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -218,7 +218,7 @@ color:rgba(0,0,0,240);
       <string>Apellido</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="bSalir">
      <property name="geometry">
       <rect>
        <x>840</x>

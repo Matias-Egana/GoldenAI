@@ -27,14 +27,14 @@ class Ui_MainWindow(object):
         self.widget.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget.setObjectName("widget")
         self.label = QtWidgets.QLabel(self.widget)
-        self.label.setGeometry(QtCore.QRect(80, 40, 411, 661))
+        self.label.setGeometry(QtCore.QRect(80, 40, 421, 661))
         self.label.setStyleSheet("border-image: url(:/image/background/background_register.jpg);\n"
 "background-color: rgba(0, 0, 0, 0.8);\n"
 "border-top-left-radius: 50px;")
         self.label.setText("")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widget)
-        self.label_2.setGeometry(QtCore.QRect(494, 45, 431, 651))
+        self.label_2.setGeometry(QtCore.QRect(500, 40, 431, 661))
         self.label_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_2.setStyleSheet("background-color:rgba(255,255,255,255);\n"
 "border-bottom-right-radius: 50px;")
@@ -53,47 +53,47 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("image: url(:/image/background/icon.svg);")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(570, 420, 311, 31))
-        self.plainTextEdit.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Email = QtWidgets.QPlainTextEdit(self.widget)
+        self.Email.setGeometry(QtCore.QRect(570, 420, 311, 31))
+        self.Email.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Email.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.plainTextEdit_2 = QtWidgets.QPlainTextEdit(self.widget)
-        self.plainTextEdit_2.setGeometry(QtCore.QRect(570, 490, 311, 31))
-        self.plainTextEdit_2.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
-        self.plainTextEdit_2.setStyleSheet("background-color:rgba(0,0,0,0);\n"
+        self.Email.setObjectName("Email")
+        self.Contra = QtWidgets.QPlainTextEdit(self.widget)
+        self.Contra.setGeometry(QtCore.QRect(570, 490, 311, 31))
+        self.Contra.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.Contra.setStyleSheet("background-color:rgba(0,0,0,0);\n"
 "border: none;\n"
 "border-bottom:2px solid rgba(46,82,101,200);\n"
 "color:rgba(0,0,0,240);\n"
 "")
-        self.plainTextEdit_2.setObjectName("plainTextEdit_2")
-        self.label_7 = QtWidgets.QLabel(self.widget)
-        self.label_7.setGeometry(QtCore.QRect(650, 560, 151, 20))
+        self.Contra.setObjectName("Contra")
+        self.registrarse = QtWidgets.QLabel(self.widget)
+        self.registrarse.setGeometry(QtCore.QRect(650, 560, 151, 20))
         font = QtGui.QFont()
         font.setBold(True)
         font.setUnderline(True)
         font.setWeight(75)
-        self.label_7.setFont(font)
-        self.label_7.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.label_7.setStyleSheet(" QLabel {\n"
+        self.registrarse.setFont(font)
+        self.registrarse.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.registrarse.setStyleSheet(" QLabel {\n"
 "        color: black;\n"
 "         text-decoration: underline;\n"
 " }\n"
 "  QLabel:hover {\n"
 "        color: darkviolet;\n"
 " }")
-        self.label_7.setObjectName("label_7")
-        self.pushButton = QtWidgets.QPushButton(self.widget)
-        self.pushButton.setGeometry(QtCore.QRect(610, 610, 211, 41))
+        self.registrarse.setObjectName("registrarse")
+        self.bIngresar = QtWidgets.QPushButton(self.widget)
+        self.bIngresar.setGeometry(QtCore.QRect(610, 610, 211, 41))
         font = QtGui.QFont()
         font.setPointSize(-1)
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("            QPushButton {\n"
+        self.bIngresar.setFont(font)
+        self.bIngresar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bIngresar.setStyleSheet("            QPushButton {\n"
 "                background: qlineargradient(\n"
 "                    spread:pad, x1:0, y1:0, x2:1, y2:0,\n"
 "                    stop:0 #6dd5fa, stop:0.5 #8e44ad, stop:1 #bf55ec\n"
@@ -111,11 +111,11 @@ class Ui_MainWindow(object):
 "                    stop:0 #6dd5fa, stop:0.5 rgba(0, 0, 0, 0.3), stop:1 #bf55ec\n"
 "                );\n"
 "            }")
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_2.setGeometry(QtCore.QRect(850, 70, 51, 51))
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("\n"
+        self.bIngresar.setObjectName("bIngresar")
+        self.bSalir = QtWidgets.QPushButton(self.widget)
+        self.bSalir.setGeometry(QtCore.QRect(850, 70, 51, 51))
+        self.bSalir.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bSalir.setStyleSheet("\n"
 "\n"
 "QPushButton {\n"
 "     background-color: transparent; \n"
@@ -124,11 +124,11 @@ class Ui_MainWindow(object):
 " QPushButton:hover {\n"
 "      background-color: grey;\n"
 " }")
-        self.pushButton_2.setText("")
+        self.bSalir.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon1)
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.bSalir.setIcon(icon1)
+        self.bSalir.setObjectName("bSalir")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -138,10 +138,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Ingresar"))
         self.label_3.setText(_translate("MainWindow", "Log In"))
-        self.plainTextEdit.setPlaceholderText(_translate("MainWindow", "Email"))
-        self.plainTextEdit_2.setPlaceholderText(_translate("MainWindow", "Contraseña"))
-        self.label_7.setText(_translate("MainWindow", "¿Desea registrarse?"))
-        self.pushButton.setText(_translate("MainWindow", "Ingresar"))
+        self.Email.setPlaceholderText(_translate("MainWindow", "Email"))
+        self.Contra.setPlaceholderText(_translate("MainWindow", "Contraseña"))
+        self.registrarse.setText(_translate("MainWindow", "¿Desea registrarse?"))
+        self.bIngresar.setText(_translate("MainWindow", "Ingresar"))
 import res_rc
 
 

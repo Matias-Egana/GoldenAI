@@ -37,11 +37,11 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 609, 749))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label.setGeometry(QtCore.QRect(10, 60, 601, 701))
-        self.label.setStyleSheet("background-color:white;")
-        self.label.setText("")
-        self.label.setObjectName("label")
+        self.Camara = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.Camara.setGeometry(QtCore.QRect(10, 60, 601, 701))
+        self.Camara.setStyleSheet("background-color:white;")
+        self.Camara.setText("")
+        self.Camara.setObjectName("Camara")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.tableWidget = QtWidgets.QTableWidget(self.widget)
         self.tableWidget.setGeometry(QtCore.QRect(620, 60, 501, 701))
@@ -72,10 +72,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(3, item)
-        self.pushButton = QtWidgets.QPushButton(self.widget)
-        self.pushButton.setGeometry(QtCore.QRect(10, 770, 211, 51))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("            QPushButton {\n"
+        self.bRegistrar = QtWidgets.QPushButton(self.widget)
+        self.bRegistrar.setGeometry(QtCore.QRect(10, 770, 211, 51))
+        self.bRegistrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bRegistrar.setStyleSheet("            QPushButton {\n"
 "                background-color: rgba(245, 245, 255, 255); /* Morado muy claro */\n"
 "                color: black;\n"
 "                border: none;\n"
@@ -90,13 +90,13 @@ class Ui_MainWindow(object):
 "            } ")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/image/background/icon_agregarPatentes.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon1)
-        self.pushButton.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget)
-        self.pushButton_2.setGeometry(QtCore.QRect(1110, 0, 51, 51))
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("\n"
+        self.bRegistrar.setIcon(icon1)
+        self.bRegistrar.setIconSize(QtCore.QSize(50, 50))
+        self.bRegistrar.setObjectName("bRegistrar")
+        self.bSalir = QtWidgets.QPushButton(self.widget)
+        self.bSalir.setGeometry(QtCore.QRect(1110, 0, 51, 51))
+        self.bSalir.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bSalir.setStyleSheet("\n"
 "\n"
 "QPushButton {\n"
 "     background-color: transparent; \n"
@@ -105,11 +105,11 @@ class Ui_MainWindow(object):
 " QPushButton:hover {\n"
 "      background-color: grey;\n"
 " }")
-        self.pushButton_2.setText("")
+        self.bSalir.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon2)
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.bSalir.setIcon(icon2)
+        self.bSalir.setObjectName("bSalir")
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -127,7 +127,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Fecha"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Estado"))
-        self.pushButton.setText(_translate("MainWindow", "Registro de patentes"))
+        self.bRegistrar.setText(_translate("MainWindow", "Registro de patentes"))
 import res_rc
 
 
