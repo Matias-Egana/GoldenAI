@@ -9,7 +9,35 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtCore import QTimer, Qt
+import sys
+import cv2
+import pytesseract
+import re
+import os
+import sys
+import res_rc
+import sqlite3
+import time
+from datetime import datetime
 
+# Configuración de Tesseract
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+
+# Directorio base 
+base_dir = os.getcwd()
+
+# Directorio para guardar las imágenes
+output_dir = os.path.join(base_dir, 'resultado')
+database_file = os.path.join(base_dir, 'mi_base_de_datos.db')
+
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+    print(f"Directorio {output_dir} creado.")
+else:
+    print(f"Directorio {output_dir} ya existe.")
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -115,6 +143,56 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.cap = cv2.VideoCapture(0)
+        self.index = 1
+        
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_frame)
+        self.timer.start(3000)
+
+        initialize_database()
+        self.mostrar_patentes()
+    
+    def start_timer(self):
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.mostrar_patentes)
+        self.timer.start(1000)  # Actualiza cada 1 segundos
+
+    def update_frame(self):
+        ret, frame = self.cap.read()
+        if ret:
+            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            height, width, channel = frame_rgb.shape
+            step = channel * width
+            q_img = QImage(frame_rgb.data, width, height, step, QImage.Format_RGB888)
+            self.Camara.setPixmap(QPixmap.fromImage(q_img))
+
+            procesar_imagen(frame, self.index)
+            self.index += 1
+
+    # Función para mostrar las patentes
+    def mostrar_patentes(self):
+        conn = sqlite3.connect(database_file)
+        cursor = conn.cursor()
+        
+        cursor.execute('SELECT patente_id, digitos_patente, hora_registro, fecha_registro, estado FROM patentes')
+        patentes = cursor.fetchall()
+        
+        conn.close()
+
+        # Configurar el número de filas y columnas del tableWidget
+        self.tableWidget.setRowCount(len(patentes))
+        self.tableWidget.setColumnCount(4)  # Asegúrate de que siempre haya 4 columnas
+
+        # Llenar el tableWidget con los datos de las patentes
+        for row_num, row_data in enumerate(patentes):
+            for col_num, col_data in enumerate(row_data[1:5]):
+                self.tableWidget.setItem(row_num, col_num, QTableWidgetItem(str(col_data)))
+        
+
+    def closeEvent(self, event):
+        self.cap.release()
+        event.accept()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -128,11 +206,121 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Estado"))
         self.bRegistrar.setText(_translate("MainWindow", "Registro de patentes"))
-import res_rc
+
+def procesar_imagen(image, index):
+        # Convertir a escala de grises
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Aplicar umbralización
+        _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        # Realizar operaciones morfológicas para eliminar el ruido
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=1)
+
+        # Encontrar contornos
+        cnts, _ = cv2.findContours(opening, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        # Bandera para determinar si se ha detectado una patente
+        patente_detectada = False
+
+        # Iterar sobre los contornos
+        for c in cnts:
+            x, y, w, h = cv2.boundingRect(c)
+            
+            # Filtrar contornos basados en el área y la relación de aspecto
+            if cv2.contourArea(c) > 5000 and 1 < w / h < 5:
+                # Recortar región de interés
+                roi = gray[y:y+h, x:x+w]
+                
+                # Aplicar OCR a la región de interés
+                text = pytesseract.image_to_string(roi, config='--psm 6')
+                
+                # Limpiar y mostrar el texto
+                cleaned_text = ''.join(filter(str.isalnum, text))
+                
+                # Filtrar por longitud del texto y caracteres válidos
+                if len(cleaned_text) == 6 and re.match(r'^[A-Z0-9]+$', cleaned_text):
+                    patente_detectada = True
+                    print('PATENTE ENCONTRADA:', cleaned_text)
+
+                    # Dibujar rectángulo alrededor de la placa
+                    cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                    cv2.putText(image, cleaned_text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                    # Guardar la patente, estado y la fecha/hora en la base de datos SQLite
+                    estado = "Autorizado"
+                    save_to_database(cleaned_text, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), estado)
+
+
+        # Guardar la imagen procesada en la carpeta 'resultado' solo si se detectó una patente
+        if patente_detectada:
+            output_dir = 'resultado'  # Asegúrate de que este directorio exista
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+            output_path = os.path.join(output_dir, f'Resultado{index}.jpg')
+            cv2.imwrite(output_path, image)
+            print(f"Imagen guardada en: {output_path}")
+        else:
+            print("No se detectó ninguna patente en la imagen.")
+
+# Función para inicializar la base de datos SQLite y las tablas
+def initialize_database():
+    conn = sqlite3.connect(database_file)
+    cursor = conn.cursor()
+    
+    # Crear tabla de usuarios si no existe
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS usuarios (
+        usuario_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT,
+        apellido TEXT,
+        correo TEXT UNIQUE,
+        contrasena TEXT
+    )
+    ''')
+    
+    # Crear tabla de patentes si no existe
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS patentes (
+        patente_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        usuario_id INTEGER,
+        digitos_patente TEXT,
+        hora_registro TEXT,
+        fecha_registro TEXT,
+        estado TEXT DEFAULT 'Denegado',
+        FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+    )
+    ''')
+
+    # Crear tabla de patentes permitidas si no existe
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS patentes_permitidas (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        usuario_id INTEGER,
+        patentes_registradas TEXT UNIQUE,
+        FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+#  Función para guardar la patente y la fecha/hora en la base de datos SQLite
+def save_to_database(patente, fecha_hora, estado='Denegado', usuario_id=None):
+    conn = sqlite3.connect(database_file)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO patentes (usuario_id, digitos_patente, hora_registro, fecha_registro, estado) VALUES (?, ?, ?, ?, ?)
+    ''', (usuario_id, patente, fecha_hora.split()[1], fecha_hora.split()[0], estado))
+    
+    conn.commit()
+    conn.close()
+
+    ui.mostrar_patentes()
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
