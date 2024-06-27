@@ -146,15 +146,22 @@ class Ui_MainWindow(object):
         self.cap = cv2.VideoCapture(0)
         self.index = 1
         
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame)
-        self.timer.start(3000)
+        # Timer para actualizar el feed de la cámara
+        self.update_timer = QTimer()
+        self.update_timer.timeout.connect(self.update_frame)
+        self.update_timer.start(30)  # Actualiza cada 30 ms para una reproducción fluida
+
+        # Timer para capturar imágenes cada 3 segundos
+        self.capture_timer = QTimer()
+        self.capture_timer.timeout.connect(self.capture_image)
+        self.capture_timer.start(3000)
 
         initialize_database()
         self.mostrar_patentes()
+        self.start_timer()
     
     def start_timer(self):
-        self.timer = QTimer(self)
+        self.timer = QTimer()
         self.timer.timeout.connect(self.mostrar_patentes)
         self.timer.start(1000)  # Actualiza cada 1 segundos
 
@@ -166,7 +173,10 @@ class Ui_MainWindow(object):
             step = channel * width
             q_img = QImage(frame_rgb.data, width, height, step, QImage.Format_RGB888)
             self.Camara.setPixmap(QPixmap.fromImage(q_img))
-
+    
+    def capture_image(self):
+        ret, frame = self.cap.read()
+        if ret:
             procesar_imagen(frame, self.index)
             self.index += 1
 
