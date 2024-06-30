@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1196</width>
+    <width>1152</width>
     <height>864</height>
    </rect>
   </property>
@@ -34,9 +34,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>10</y>
          <width>611</width>
-         <height>751</height>
+         <height>741</height>
         </rect>
        </property>
        <property name="widgetResizable">
@@ -48,7 +48,7 @@
           <x>0</x>
           <y>0</y>
           <width>609</width>
-          <height>749</height>
+          <height>739</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -68,6 +68,41 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="bAtras">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>40</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+     background-color: transparent; 
+      border: none;
+ }
+ QPushButton:hover {
+      background-color: grey;
+ }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/image/background/hacia-atras.png</normaloff>:/image/background/hacia-atras.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
          </property>
         </widget>
        </widget>
@@ -164,7 +199,7 @@
       <widget class="QPushButton" name="bSalir">
        <property name="geometry">
         <rect>
-         <x>1110</x>
+         <x>1070</x>
          <y>0</y>
          <width>51</width>
          <height>51</height>

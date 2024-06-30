@@ -9,9 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import res_rc
 
-
-class Ui_MainWindow(object):
+class Registrar(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1098, 828)
@@ -125,6 +125,23 @@ class Ui_MainWindow(object):
         icon1.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.bSalir.setIcon(icon1)
         self.bSalir.setObjectName("bSalir")
+        self.bAtras = QtWidgets.QPushButton(self.widget)
+        self.bAtras.setGeometry(QtCore.QRect(540, 70, 41, 51))
+        self.bAtras.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.bAtras.setStyleSheet("QPushButton {\n"
+"     background-color: transparent; \n"
+"      border: none;\n"
+" }\n"
+" QPushButton:hover {\n"
+"      background-color: grey;\n"
+" }")
+        self.bAtras.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/image/background/hacia-atras.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.bAtras.setIcon(icon2)
+        self.bAtras.setIconSize(QtCore.QSize(40, 40))
+        self.bAtras.setObjectName("bAtras")
+        self.bAtras.clicked.connect(lambda: self.openIngresar(MainWindow))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -139,14 +156,20 @@ class Ui_MainWindow(object):
         self.bCrear.setText(_translate("MainWindow", "Crear Usuario"))
         self.Nombre.setPlaceholderText(_translate("MainWindow", "Nombre"))
         self.Apellido.setPlaceholderText(_translate("MainWindow", "Apellido"))
-import res_rc
-
+    
+    def openIngresar(self, MainWindow):
+        from Ingresar import Ingresar
+        MainWindow.hide()
+        self.goldenAiWindow = QtWidgets.QMainWindow()
+        self.goldenAi = Ingresar()
+        self.goldenAi.setupUi(self.goldenAiWindow)
+        self.goldenAiWindow.show()
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Registrar()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

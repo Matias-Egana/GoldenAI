@@ -9,9 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import res_rc
 
-
-class Ui_MainWindow(object):
+class RegistroPatentes(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1098, 828)
@@ -122,6 +122,7 @@ class Ui_MainWindow(object):
         self.bAtras.setIcon(icon3)
         self.bAtras.setIconSize(QtCore.QSize(40, 40))
         self.bAtras.setObjectName("bAtras")
+        self.bAtras.clicked.connect(lambda: self.openGoldenAi(MainWindow))
         self.bSalir = QtWidgets.QPushButton(self.widget)
         self.bSalir.setGeometry(QtCore.QRect(840, 60, 51, 51))
         self.bSalir.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -139,6 +140,7 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.bSalir.setIcon(icon4)
         self.bSalir.setObjectName("bSalir")
+        self.bSalir.clicked.connect(MainWindow.close)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -149,14 +151,21 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Ingresar"))
         self.label_3.setText(_translate("MainWindow", "Register Plate"))
         self.Patente.setPlaceholderText(_translate("MainWindow", "Ingrese su patente"))
-import res_rc
+
+    def openGoldenAi(self, MainWindow):
+        from GoldenAi import a
+        MainWindow.hide()
+        self.goldenAiWindow = QtWidgets.QMainWindow()
+        self.goldenAi = a()
+        self.goldenAi.setupUi(self.goldenAiWindow)
+        self.goldenAiWindow.show()
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = RegistroPatentes()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
