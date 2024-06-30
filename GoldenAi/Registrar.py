@@ -90,6 +90,7 @@ class Registrar(object):
 "                );\n"
 "            }")
         self.bCrear.setObjectName("bCrear")
+        self.bCrear.clicked.connect(lambda: self.openIngresar(MainWindow))
         self.Nombre = QtWidgets.QPlainTextEdit(self.widget)
         self.Nombre.setGeometry(QtCore.QRect(570, 280, 311, 31))
         self.Nombre.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.IBeamCursor))
@@ -125,6 +126,7 @@ class Registrar(object):
         icon1.addPixmap(QtGui.QPixmap(":/image/background/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.bSalir.setIcon(icon1)
         self.bSalir.setObjectName("bSalir")
+        self.bSalir.clicked.connect(MainWindow.close)
         self.bAtras = QtWidgets.QPushButton(self.widget)
         self.bAtras.setGeometry(QtCore.QRect(540, 70, 41, 51))
         self.bAtras.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))

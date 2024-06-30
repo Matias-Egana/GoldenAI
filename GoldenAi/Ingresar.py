@@ -147,10 +147,10 @@ class Ingresar(object):
         self.bIngresar.setText(_translate("MainWindow", "Ingresar"))
 
     def openGoldenAi(self, MainWindow):
-        from GoldenAi import a
+        from GoldenAi import GoldenAi
         MainWindow.hide()
         self.goldenAiWindow = QtWidgets.QMainWindow()
-        self.goldenAi = a()
+        self.goldenAi = GoldenAi()
         self.goldenAi.setupUi(self.goldenAiWindow)
         self.goldenAiWindow.show()
 
