@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+from database import initialize_database, login
 import res_rc
 
 class Ingresar(object):
@@ -134,8 +136,10 @@ class Ingresar(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.bIngresar.clicked.connect(lambda: self.openGoldenAi(MainWindow))
+        #self.bIngresar.clicked.connect(self.verificarCredenciales)
+        self.bIngresar.clicked.connect(lambda: self.verificarCredenciales(MainWindow))
         self.registrarse.mousePressEvent = lambda event: self.openRegistrar(MainWindow)
+        initialize_database()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -146,22 +150,57 @@ class Ingresar(object):
         self.registrarse.setText(_translate("MainWindow", "¿Desea registrarse?"))
         self.bIngresar.setText(_translate("MainWindow", "Ingresar"))
 
-    def openGoldenAi(self, MainWindow):
+    def verificarCredenciales(self, MainWindow):
+        email = self.Email.toPlainText().strip()
+        contrasena = self.Contra.toPlainText().strip()
+        
+        if not email.strip() or not contrasena.strip():
+            self.show_error_message("Campos vacíos", "Por favor, debe rellenar todos los campos.")
+            return
+        
+        # Lógica para verificar las credenciales
+        usuario_id = login(email, contrasena)
+        if usuario_id:
+            self.show_confirmation_message("Usuario Ingresado con éxito","Bienvenido a GoldenAi")
+            self.openGoldenAi(MainWindow, usuario_id)
+            print(usuario_id)
+        else:
+            QMessageBox.warning(MainWindow, "Error de autenticación", "Correo o contraseña incorrectos.")
+
+    def show_error_message(self, title, message):
+        msg_box = QtWidgets.QMessageBox()
+        msg_box.setIcon(QtWidgets.QMessageBox.Critical)
+        msg_box.setWindowTitle(title)
+        msg_box.setText(message)
+        msg_box.exec_()
+    
+    def show_confirmation_message(self, title, message):
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Question)
+        msg_box.setWindowTitle(title)
+        msg_box.setText(message)
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.setDefaultButton(QMessageBox.Ok)
+        
+        result = msg_box.exec_()
+        if result == QMessageBox.Ok:
+            print("Confirmed")
+
+    def openGoldenAi(self, MainWindow, usuario_id):
         from GoldenAi import GoldenAi
         MainWindow.hide()
         self.goldenAiWindow = QtWidgets.QMainWindow()
-        self.goldenAi = GoldenAi()
-        self.goldenAi.setupUi(self.goldenAiWindow)
+        self.goldenAi = GoldenAi()  # Pasar usuario_id a la siguiente ventana
+        self.goldenAi.setupUi(self.goldenAiWindow, usuario_id)
         self.goldenAiWindow.show()
 
     def openRegistrar(self, MainWindow):
         from Registrar import Registrar
         MainWindow.hide()
-        self.goldenAiWindow = QtWidgets.QMainWindow()
-        self.goldenAi = Registrar()
-        self.goldenAi.setupUi(self.goldenAiWindow)
-        self.goldenAiWindow.show()
-        
+        self.registrarWindow = QtWidgets.QMainWindow()
+        self.registrar = Registrar()
+        self.registrar.setupUi(self.registrarWindow)
+        self.registrarWindow.show()
 
 if __name__ == "__main__":
     import sys

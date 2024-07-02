@@ -187,45 +187,6 @@ QPushButton:hover {
       </size>
      </property>
     </widget>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="geometry">
-      <rect>
-       <x>510</x>
-       <y>270</y>
-       <width>381</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>379</width>
-        <height>389</height>
-       </rect>
-      </property>
-      <widget class="QLabel" name="MostrarPatentes">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>381</width>
-         <height>391</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:white;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </widget>
-    </widget>
     <widget class="QPushButton" name="bAtras">
      <property name="geometry">
       <rect>
@@ -290,6 +251,34 @@ QPushButton {
      <property name="icon">
       <iconset resource="res.qrc">
        <normaloff>:/image/background/close.png</normaloff>:/image/background/close.png</iconset>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>270</y>
+       <width>391</width>
+       <height>401</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">             QTableWidget {
+                background-color: rgba(245, 245, 255, 255); /* Morado muy claro */
+                color: black;
+                gridline-color: rgba(200, 200, 200, 255);
+                font-size: 14px;
+            }
+            QHeaderView::section {
+                background-color: rgba(220, 220, 255, 255); /* Morado claro */
+                color: black;
+                font-weight: bold;
+                border: 1px solid rgba(200, 200, 200, 255);
+            }
+            QTableWidget::item:selected {
+                background-color: rgba(235, 235, 255, 255); /* Morado muy claro */
+                color: black;
+            }</string>
      </property>
     </widget>
    </widget>
