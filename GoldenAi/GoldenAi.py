@@ -151,7 +151,7 @@ class GoldenAi(object):
 
         self.capture_timer = QTimer()
         self.capture_timer.timeout.connect(self.capture_image)
-        self.capture_timer.start(3000)  # Captura cada 3 segundos
+        self.capture_timer.start(10000)  # Captura cada 5 segundos
 
         initialize_database()
         self.start_timer()

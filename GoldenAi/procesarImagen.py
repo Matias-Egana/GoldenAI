@@ -5,6 +5,8 @@ import os
 from datetime import datetime
 from database import check_patente_permitida, detect_anomalia, get_path_output, get_path_output_dir, save_to_database
 from my_email import send_email
+from PyQt5.QtWidgets import QApplication, QProgressDialog, QMessageBox
+from PyQt5.QtCore import QTimer, Qt
 
 # Configuración de Tesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
@@ -55,6 +57,7 @@ def procesar_imagen(image, index, usuario_id):
                 if check_patente_permitida(cleaned_text, usuario_id):
                     estado = "Autorizado"
                     print("Abriendo Portón...")
+                    mostrar_progress_dialog()
                 else:
                     estado = "Denegado"
                     print("Anomalia detectada")
@@ -69,7 +72,11 @@ def procesar_imagen(image, index, usuario_id):
                     # Enviar correo de anomalia
                     subject = 'Alerta de Anomalía: Acceso Denegado'
                     body = f'Se ha detectado una anomalía con la patente: {cleaned_text}.'
-                    send_email(subject, body, to_email, output_path)
+
+                    try:
+                        send_email(subject, body, to_email, output_path)
+                    except Exception as e:
+                        print(f"No se pudo enviar el correo a {to_email}: {e}")
 
                 # Guardar la patente, estado y la fecha/hora en la base de datos SQLite
                 save_to_database(cleaned_text, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), estado, usuario_id)
@@ -84,4 +91,39 @@ def procesar_imagen(image, index, usuario_id):
         print(f"Imagen guardada en: {output_path}")
     else:
         print("No se detectó ninguna patente en la imagen.")
+
+def mostrar_progress_dialog():
+    app = QApplication.instance()
+    if app is None:
+        app = QApplication([])
     
+    dialog = QProgressDialog()
+    dialog.setWindowTitle("Acceso Autorizado")
+    dialog.setLabelText("Abriendo Portón...")
+    dialog.setWindowModality(Qt.WindowModal)
+    dialog.setMinimum(0)
+    dialog.setMaximum(100)  # Establece un máximo para la barra de progreso
+    dialog.setValue(0)
+    dialog.setCancelButton(None)
+    dialog.show()
+
+    # Configura un temporizador para actualizar el progreso cada 50 milisegundos
+    timer = QTimer()
+    timer.setInterval(50)  # Actualiza cada 50 milisegundos
+    incremento = 0
+
+    def actualizar_progreso():
+        nonlocal incremento
+        incremento += 1
+        dialog.setValue(incremento)
+
+        # Detiene el temporizador y cierra el diálogo después de 5 segundos (5000 milisegundos)
+        if incremento >= 100:
+            timer.stop()
+            QTimer.singleShot(500, dialog.close)  # Cerrar el diálogo 500 ms después de completar la barra
+
+    timer.timeout.connect(actualizar_progreso)
+    timer.start()
+
+    app.exec_()
+    app.exec_()
